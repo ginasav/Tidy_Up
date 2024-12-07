@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            Tab("Your Library", systemImage: "books.vertical.fill") {
+                LibraryView()
+            }
+            
+            Tab("Add Book", systemImage: "plus.app") {
+                
+            }
+            
+            Tab("Tidy Up", systemImage: "ruler.fill") {
+                
+            }
         }
-        .padding()
     }
 }
 
