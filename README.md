@@ -1,5 +1,5 @@
 <h1>Tidy Up - Get rid of the annoying space!</h1>
----
+
 This is my first solo project.
 
 The app idea is simple: using the measure feature of the iPhone, you measure the shelf of your library and it tells you how many books can fit in it!
