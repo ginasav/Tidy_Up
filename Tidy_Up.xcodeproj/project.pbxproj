@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		8EC0D4EE2D048C6A002A3EBA /* Tidy_Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tidy_Up.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EC0D4EE2D048C6A002A3EBA /* Tidy_Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Tidy_Up.app; path = "/Users/ginasaviano/Documents/Xcode/Tidy_Up/build/Debug-iphoneos/Tidy_Up.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,16 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				8EC0D4F02D048C6A002A3EBA /* Tidy_Up */,
-				8EC0D4EF2D048C6A002A3EBA /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		8EC0D4EF2D048C6A002A3EBA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8EC0D4EE2D048C6A002A3EBA /* Tidy_Up.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,7 +86,7 @@
 			mainGroup = 8EC0D4E52D048C6A002A3EBA;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 8EC0D4EF2D048C6A002A3EBA /* Products */;
+			productRefGroup = 8EC0D4E52D048C6A002A3EBA;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

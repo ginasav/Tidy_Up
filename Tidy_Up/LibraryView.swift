@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct LibraryView: View {
+
+    
     //MARK: BODY
     var body: some View {
-   
+        
+        NavigationView {
             ZStack {
                 Color.background.ignoresSafeArea()
-                
-                VStack(alignment: .leading) {
-                    Text("My Shelves")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundStyle(Color.white)
-                }
             }
+            .navigationBarTitle("My Shelves")
+            .navigationBarTitleTextColor(.white)
         }
-    
-    }//MARK: - END OF BODY
+    } //MARK: - END OF BODY
+}
+
 
 
 //MARK: PREVIEW
