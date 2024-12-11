@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		8EC0D4EE2D048C6A002A3EBA /* Tidy_Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Tidy_Up.app; path = "/Users/ginasaviano/Documents/Xcode/Tidy_Up/build/Debug-iphoneos/Tidy_Up.app"; sourceTree = "<absolute>"; };
+		8EBD311E2D0881DD001C5E55 /* Tidy_Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tidy_Up.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				8EC0D4F02D048C6A002A3EBA /* Tidy_Up */,
+				8EBD311E2D0881DD001C5E55 /* Tidy_Up.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = Tidy_Up;
-			productReference = 8EC0D4EE2D048C6A002A3EBA /* Tidy_Up.app */;
+			productReference = 8EBD311E2D0881DD001C5E55 /* Tidy_Up.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -246,6 +247,8 @@
 				DEVELOPMENT_TEAM = 57Q49D2PJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Tidy-Up-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$Camera Usage needed to measure the shelves";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -275,6 +278,8 @@
 				DEVELOPMENT_TEAM = 57Q49D2PJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Tidy-Up-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$Camera Usage needed to measure the shelves";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

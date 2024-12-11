@@ -39,11 +39,9 @@ struct MeasureView: View {
             }
             
             // Optional Crosshair Overlay
-            Circle()
-                .stroke(lineWidth: 2)
-                .foregroundColor(.yellow)
-                .frame(width: 20, height: 20)
-            
+            Image(systemName: "plus")
+                .foregroundStyle(.accent)
+                .font(.title)
             // Bottom Toolbar
             HStack {
                 Spacer()

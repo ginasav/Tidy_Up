@@ -19,7 +19,6 @@ struct ContentView: View {
                 LibraryView()
             }
             
-            
             Tab("Tidy Up", systemImage: "ruler.fill") {
                 MeasureView()
             }

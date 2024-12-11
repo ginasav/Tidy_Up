@@ -1,26 +1,20 @@
 //
-//  ShelfViewModel.swift
+//  BookViewModel.swift
 //  Tidy_Up
 //
-//  Created by Gina Saviano on 09/12/24.
+//  Created by Gina Saviano on 10/12/24.
 //
 
-//import Foundation
-//
-//class ShelfViewModel: ObservableObject {
-//    @Published var books: [BookModel] = []
-//    @Published var shelfLengthInCm: Double = 0.0
-//    
-//    func addBook(title: String, author: String, pages: Int, hardCover: Bool) {
-//        let newBook = BookModel(title: title, author: author, pages: pages, hardCover: hardCover)
-//        books.append(newBook)
-//    }
-//    
-//    func calculateBooksThatFit() -> Int {
-//        let 
-//    }
-//    
-//    
-//}
+import Foundation
+import SwiftUI
 
-
+@Observable class ShelfViewModel: ObservableObject {
+    
+    var books : [BookModel] = []
+    
+    // Functions connected to the Book Class
+    func addBook(_ book: BookModel) {
+        self.books.insert(book, at: 0)
+    }
+    
+}
