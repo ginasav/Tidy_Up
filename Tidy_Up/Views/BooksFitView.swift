@@ -10,7 +10,7 @@ import SwiftUI
 struct BooksFitView: View {
     
     @EnvironmentObject var shelfViewModel: ShelfViewModel
-    var booksFitResult: (count: Int, titles: [String])
+    var fittingBooks: [BookModel]
     
     var body: some View {
         
@@ -29,7 +29,7 @@ struct BooksFitView: View {
                         
                         Spacer()
                         
-                        Text("\(booksFitResult.count)")
+                        Text("\(fittingBooks.count)")
                             .font(.title3)
                             .foregroundColor(.white)
                             .fontWeight(.bold)
@@ -38,14 +38,14 @@ struct BooksFitView: View {
                     .padding()
                     
                     HStack {
-                        List(booksFitResult.titles, id: \.self) { title in
+                        List(fittingBooks) { book in
                             
-                            Text(title)
+                            Text(book.title)
                                 .font(.title3)
                                 .foregroundColor(.black)
                             .fontWeight(.bold)}
                         
-                       
+                        
                         
                     }
                     
@@ -69,5 +69,8 @@ struct BooksFitView: View {
 
 //MARK: PREVIEW
 #Preview {
-    BooksFitView(booksFitResult: (count: 10, titles: ["Gomorra", "Accabadora"]))
+    BooksFitView(fittingBooks: [
+        BookModel(title: "Book Title", author: "Book Author", pages: 100, hardCover: true),
+        BookModel(title: "Book Title 2", author: "Book Author", pages: 150, hardCover: true)
+    ])
 }
