@@ -10,9 +10,11 @@ import ARKit
 import RealityKit
 
 struct MeasureView: View {
-    @State var distance: Float = 0
+    @State var distance: Float = 0.0
     @State var positions: [SIMD3<Float>] = []
     @State var anchors: [AnchorEntity] = [] // Track anchors
+    @EnvironmentObject var shelfViewModel: ShelfViewModel
+    @State var showBookCalculationView: Bool = false
     
     var body: some View {
         ZStack {
@@ -23,25 +25,60 @@ struct MeasureView: View {
             // Centered Distance Display
             VStack {
                 Spacer()
-                Text("Distance")
-                    .font(.headline)
-                    .foregroundColor(.secondary)
-                    .padding(.bottom, 2)
-                Text("\(String(format: "%.2f", distance)) m")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white.opacity(0.8))
-                    )
-                    .padding(.bottom, 50)
-            }
+                
+                HStack {
+                    VStack {
+                        Text("Distance")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.bottom, 2)
+                        Text("\(String(format: "%.2f", distance)) m")
+                            .font(.largeTitle)
+                            .bold()
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.white.opacity(0.4))
+                            )
+                            .padding(.bottom, 50)
+                    }//END OF THE DISTANCE SHOWER
+                    
+                    Spacer()
+                    
+                    //Button that triggers the calc and goes to the last View
+                    Button(action: {
+                        let result = shelfViewModel.calculateBooksThatFit(for: Double( distance))
+                        
+                        let countBooks = result.count
+                        let titlesBooks = result.titles
+                        
+                        showBookCalculationView = true
+                    }) {
+                        Text("Calculate")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.accentColor.opacity(0.9))
+                            )
+                    }
+                    
+                }
+            }.padding(.horizontal)
+                .sheet(isPresented: $showBookCalculationView) {
+                    BooksFitView(booksFitResult: shelfViewModel.calculateBooksThatFit(for: Double(distance)))
+                        .environmentObject(shelfViewModel)
+                }
             
             // Optional Crosshair Overlay
             Image(systemName: "plus")
                 .foregroundStyle(.accent)
                 .font(.title)
+      
+            
+            
             // Bottom Toolbar
             HStack {
                 Spacer()

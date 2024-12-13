@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var shelfViewModel = ShelfViewModel()
+    
     init() {
         UITabBar.appearance().unselectedItemTintColor = .unselectedIcons
     }
@@ -23,6 +25,7 @@ struct ContentView: View {
                 MeasureView()
             }
         }
+        .environmentObject(shelfViewModel)
     }
 }
 

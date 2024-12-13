@@ -9,8 +9,8 @@ import SwiftUI
 
 struct BooksFitView: View {
     
-    @State var shelfLength: Double = 0.0
-    @State var bookCount: Int = 0
+    @EnvironmentObject var shelfViewModel: ShelfViewModel
+    var booksFitResult: (count: Int, titles: [String])
     
     var body: some View {
         
@@ -19,7 +19,7 @@ struct BooksFitView: View {
                 Color.background.ignoresSafeArea()
                 
                 VStack {
-                  
+                    
                     HStack {
                         
                         Text("Books that fit:")
@@ -29,25 +29,45 @@ struct BooksFitView: View {
                         
                         Spacer()
                         
-                        Text("\(bookCount)")
+                        Text("\(booksFitResult.count)")
                             .font(.title3)
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                         
                     } //Books that fit
                     .padding()
-                }
+                    
+                    HStack {
+                        List(booksFitResult.titles, id: \.self) { title in
+                            
+                            Text(title)
+                                .font(.title3)
+                                .foregroundColor(.black)
+                            .fontWeight(.bold)}
+                        
+                       
+                        
+                    }
+                    
+                    Spacer()
+                    
+                }.padding()
                 
+                    .scrollContentBackground(.hidden)
+                    .listRowBackground(Color.background)
             }
-            .navigationBarTitle("Books that fit")
-            .navigationBarTitleTextColor(.white)
             
         }
+        .navigationBarTitle("Books that fit")
+        .navigationBarTitleTextColor(.white)
         
     }
 }
 
+
+
+
 //MARK: PREVIEW
 #Preview {
-    BooksFitView()
+    BooksFitView(booksFitResult: (count: 10, titles: ["Gomorra", "Accabadora"]))
 }

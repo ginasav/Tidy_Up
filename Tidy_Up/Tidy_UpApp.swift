@@ -12,6 +12,7 @@ struct Tidy_UpApp: App {
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
+                .transition(.opacity)
         }
     }
 }
