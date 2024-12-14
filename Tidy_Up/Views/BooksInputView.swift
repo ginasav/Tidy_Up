@@ -51,7 +51,10 @@ struct BooksInputView: View {
                         let newBook = BookModel(title: title, author: author, pages: pages, hardCover: hardCover)
                         addBook(newBook)
                         clearForm()
-                        //insert haptic
+                        
+                        //haptic
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(.success)
                     }
                     .listRowBackground(Color.accentColor).foregroundStyle(Color.black.opacity(0.8)).fontWeight(.bold).padding(.horizontal, 80)
                     

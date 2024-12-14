@@ -48,11 +48,14 @@ struct LibraryView: View {
                                     }
                                 } // Section of each book
                                 .foregroundStyle(.white)
-                            }
+                                
+                            }.onDelete(perform: shelfViewModel.delete)
                             .listRowBackground(Color.mySecondary)
+                            
                         }
                         .padding(.top, 5)
                         .scrollContentBackground(.hidden)
+                        
                     }
                 }
             }
