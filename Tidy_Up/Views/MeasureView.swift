@@ -206,11 +206,8 @@ class Coordinator: NSObject {
             let pointAnchor = AnchorEntity(world: position) //the actual point
             let pointEntity = ModelEntity(
                 mesh: .generatePlane(width: 0.01, height: 0.01),
-                materials: [SimpleMaterial(color: .accent, isMetallic: true)]
-            ) //the figure you're gonna see
-            
-//            let pointEntity = ModelEntity(mesh: .generateSphere(radius: 0.005),
-//                                          materials: [SimpleMaterial(color: .systemTeal, isMetallic: true)]) //the figure you're gonna see
+                materials: [SimpleMaterial(color: .accent, isMetallic: false)]
+            ) 
             
             pointAnchor.addChild(pointEntity)
             arView.scene.addAnchor(pointAnchor)

@@ -40,10 +40,16 @@ struct BooksFitView: View {
                     HStack {
                         List(fittingBooks) { book in
                             
-                            Text(book.title)
-                                .font(.title3)
-                                .foregroundColor(.black)
-                            .fontWeight(.bold)}
+                            VStack (alignment: .leading) {
+                                Text(book.title)
+                                    .font(.title2)
+                                    .foregroundStyle(.white)
+                                    .fontWeight(.bold)
+                                Text(book.author)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.white)
+                            }
+                        }
                         
                         
                         
