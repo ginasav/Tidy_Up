@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct Tidy_UpApp: App {
+    @StateObject private var coordinator = AppCoordinator()
+    
     var body: some Scene {
         WindowGroup {
-            SplashScreenView()
-                .transition(.opacity)
+            AppCoordinatorView(coordinator: coordinator)
         }
     }
 }
