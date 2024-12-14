@@ -40,9 +40,8 @@ struct MeasureView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.white.opacity(0.2))
                         )
-                        .padding(.bottom, 50)
                 }
-                .padding()
+                .padding(.top, 50)
                 
                 Spacer()
                 
