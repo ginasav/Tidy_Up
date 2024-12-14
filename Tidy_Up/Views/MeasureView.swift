@@ -30,28 +30,23 @@ struct MeasureView: View {
             
             // Centered Distance Display
             VStack {
+                
+                VStack {
+                    Text("\(String(format: "%.2f", distance)) m")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.white.opacity(0.2))
+                        )
+                        .padding(.bottom, 50)
+                }
+                .padding()
+                
                 Spacer()
                 
                 HStack {
-                    VStack {
-                        Text("Distance")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.bottom, 2)
-                        
-                        Text("\(String(format: "%.2f", distance)) m")
-                            .font(.largeTitle)
-                            .bold()
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.white.opacity(0.4))
-                            )
-                            .padding(.bottom, 50)
-                    }//END OF THE DISTANCE SHOWER
-                    
-                    Spacer()
-                    
                     //Button that triggers the calc and goes to the last View
                     Button(action: {
                         fittingBooks = calculateBooksThatFit(shelfLength: shelfLength, books: shelfViewModel.books)
@@ -69,7 +64,7 @@ struct MeasureView: View {
                     }
                     
                 }
-            }.padding(.horizontal)
+                }.padding()
                 .sheet(isPresented: $showResultView) {
                     BooksFitView(fittingBooks: fittingBooks)
                         .environmentObject(shelfViewModel)
@@ -210,8 +205,13 @@ class Coordinator: NSObject {
             }
             
             let pointAnchor = AnchorEntity(world: position) //the actual point
-            let pointEntity = ModelEntity(mesh: .generateSphere(radius: 0.005),
-                                          materials: [SimpleMaterial(color: .systemTeal, isMetallic: true)]) //the figure you're gonna see
+            let pointEntity = ModelEntity(
+                mesh: .generatePlane(width: 0.01, height: 0.01),
+                materials: [SimpleMaterial(color: .accent, isMetallic: true)]
+            ) //the figure you're gonna see
+            
+//            let pointEntity = ModelEntity(mesh: .generateSphere(radius: 0.005),
+//                                          materials: [SimpleMaterial(color: .systemTeal, isMetallic: true)]) //the figure you're gonna see
             
             pointAnchor.addChild(pointEntity)
             arView.scene.addAnchor(pointAnchor)
