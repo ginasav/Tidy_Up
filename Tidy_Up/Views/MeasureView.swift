@@ -51,7 +51,7 @@ struct MeasureView: View {
                         fittingBooks = calculateBooksThatFit(shelfLength: shelfLength, books: shelfViewModel.books)
                         showResultView = true
                     }) {
-                        Text("Calculate")
+                        Text("Tidy Up!")
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)

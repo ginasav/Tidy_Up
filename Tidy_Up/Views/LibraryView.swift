@@ -33,7 +33,8 @@ struct LibraryView: View {
                     } else {
                         List {
                             ForEach(shelfViewModel.books) { book in
-                                Section () {
+                                
+                                VStack {
                                     HStack {
                                         VStack (alignment: .leading) {
                                             Text(book.title)
@@ -41,6 +42,7 @@ struct LibraryView: View {
                                             Text("by \(book.author)")
                                                 .font(.subheadline)
                                         }
+                                        
                                         Spacer ()
                                         
                                         Text (String(format: "%.2f cm", (book.thickness)))
