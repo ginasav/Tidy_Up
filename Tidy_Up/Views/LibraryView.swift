@@ -10,6 +10,7 @@ import SwiftUI
 struct LibraryView: View {
     
     @State var showModal: Bool = false
+    @State private var editMode: Bool = false
     @EnvironmentObject var shelfViewModel: ShelfViewModel
     @EnvironmentObject var books: ShelfViewModel
     
@@ -32,28 +33,28 @@ struct LibraryView: View {
                     } else {
                         List {
                             ForEach(shelfViewModel.books) { book in
-                                
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(book.title)
+                                Section () {
+                                    HStack {
+                                        VStack (alignment: .leading) {
+                                            Text(book.title)
+                                                .font(.headline)
+                                            Text("by \(book.author)")
+                                                .font(.subheadline)
+                                        }
+                                        Spacer ()
+                                        
+                                        Text (String(format: "%.2f cm", (book.thickness)))
                                             .font(.headline)
-                                        Text("by \(book.author)")
-                                            .font(.subheadline)
                                     }
-                                    
-                                    Spacer()
-                                    
-                                    Text("\(book.thickness, specifier: "%.2f") cm")
-                                        .font(.headline)
-                                }
+                                } // Section of each book
                                 .foregroundStyle(.white)
                             }
-                            .onDelete(perform: shelfViewModel.delete)
-                            .listRowBackground(Color.background)
+                            .listRowBackground(Color.mySecondary)
                         }
+                        .padding(.top, 5)
                         .scrollContentBackground(.hidden)
                     }
-                } //make it changable from library
+                }
             }
             .navigationBarTitle("My Library")
             .navigationBarTitleTextColor(.white)
@@ -65,14 +66,27 @@ struct LibraryView: View {
                         Image(systemName: "plus")
                             .font(.title2)
                     }
-                    
                 }
-            }
-            .sheet(isPresented: $showModal) {
+                
+                
+                ToolbarItem (placement: .navigationBarLeading) {
+                    Button (action: {
+                        editMode = true
+                    }) {
+                        Text ("Edit")
+                    }
+                    .font(.title2)
+                    .foregroundStyle(.accent)
+                }
+            }.sheet(isPresented: $showModal) {
                 BooksInputView(showModal: $showModal, addBook: { book in
                     shelfViewModel.addBook(book)
                 })
             }
+            .sheet(isPresented: $editMode) {
+                EditView(editMode: $editMode)
+            }
+            
             
         }
         
