@@ -11,6 +11,7 @@ struct LibraryView: View {
     
     @State var showModal: Bool = false
     @EnvironmentObject var shelfViewModel: ShelfViewModel
+    @EnvironmentObject var books: ShelfViewModel
     
     //MARK: BODY
     var body: some View {
@@ -47,7 +48,8 @@ struct LibraryView: View {
                                 }
                                 .foregroundStyle(.white)
                             }
-                            .listRowBackground(Color.gray)
+                            .onDelete(perform: shelfViewModel.delete)
+                            .listRowBackground(Color.background)
                         }
                         .scrollContentBackground(.hidden)
                     }
@@ -71,7 +73,10 @@ struct LibraryView: View {
                     shelfViewModel.addBook(book)
                 })
             }
+            
         }
+        
+        
     } //MARK: - END OF BODY
 }
 
