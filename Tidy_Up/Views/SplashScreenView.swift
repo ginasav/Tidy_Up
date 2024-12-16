@@ -68,7 +68,8 @@ struct SplashScreenView: View {
                         .repeatForever(autoreverses: false).delay(0.02),
                         value: showAnimation
                     )
-            }.scaleEffect(0.6)
+            }.accessibilityLabel("Splash Screen. Wait 3 seconds to transition to the main screen") // VoiceOver
+                .scaleEffect(0.6)
                 .opacity(opacity)
             
                 .onAppear() {
@@ -82,12 +83,13 @@ struct SplashScreenView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         coordinator.switchToMainView()
                     }
+                    
                 }
         }
     }
 }//MARK: - END OF BODY
 
 //MARK: PREVIEW
-//#Preview {
-//    SplashScreenView(coordinator: coordinator)
-//}
+#Preview {
+    SplashScreenView(coordinator: AppCoordinator())
+}
