@@ -9,12 +9,12 @@ import Foundation
 
 struct BookModel: Identifiable {
     let id: UUID = UUID()
-    var title: String = ""
-    var author: String = ""
+    var title: String
+    var author: String
     
-    var pages: Int = 0
+    var pages: Int
     
-    var hardCover: Bool = false
+    var hardCover: Bool
     
     // Thickness of the book
     var thickness: Double {

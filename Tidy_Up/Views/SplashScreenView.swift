@@ -68,7 +68,7 @@ struct SplashScreenView: View {
                         .repeatForever(autoreverses: false).delay(0.02),
                         value: showAnimation
                     )
-            }.accessibilityLabel("Splash Screen. Wait 3 seconds to transition to the main screen") // VoiceOver
+            }.accessibilityElement(children: .combine)
                 .scaleEffect(0.6)
                 .opacity(opacity)
             
@@ -86,6 +86,7 @@ struct SplashScreenView: View {
                     
                 }
         }
+        .accessibilityLabel("Splash Screen. Four books moving up and down with the name of the app.")
     }
 }//MARK: - END OF BODY
 

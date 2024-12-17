@@ -46,6 +46,8 @@ struct BooksInputView: View {
                             .foregroundStyle(.tertiary)
                     } .foregroundStyle(Color.white)
                         .listRowBackground(Color.gray)
+                    //Accessibility for HardCover toggle
+                        .accessibilityValue(hardCover ? "Book has hard cover" : "Now book has soft cover")
                     
                     Button ("Add Another Book") {
                         let newBook = BookModel(title: title, author: author, pages: pages, hardCover: hardCover)
@@ -73,7 +75,8 @@ struct BooksInputView: View {
                                 let newBook = BookModel(title: title, author: author, pages: pages, hardCover: hardCover)
                                 addBook(newBook)
                                 showModal.toggle()
-                            }
+                            }.accessibilityLabel("Double-tap to save the new book and exit")
+                                .accessibilityRemoveTraits(.isButton)
                             
                             
                         }

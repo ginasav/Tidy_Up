@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LibraryView: View {
     
-    @State var showModal: Bool = false
+    @State private var showModal: Bool = false
     @State private var editMode: Bool = false
     @EnvironmentObject var shelfViewModel: ShelfViewModel
     @EnvironmentObject var books: ShelfViewModel
@@ -48,15 +48,23 @@ struct LibraryView: View {
                                         Text (String(format: "%.2f cm", (book.thickness)))
                                             .font(.headline)
                                     }
+                                    
                                 } // Section of each book
                                 .foregroundStyle(.white)
+                                //Accessibility for each element of the list
+                                .accessibilityElement(children: .combine)
+                                .accessibilityLabel("\(book.title) by \(book.author), thickness \(String(format: "%.2f centimeters", book.thickness))")
+                                .accessibilityHint("Flick up to delete")
+                                
                                 
                             }.onDelete(perform: shelfViewModel.delete)
-                            .listRowBackground(Color.mySecondary)
+                                .listRowBackground(Color.mySecondary)
                             
                         }
                         .padding(.top, 5)
                         .scrollContentBackground(.hidden)
+                        
+                        
                         
                     }
                 }
@@ -70,7 +78,8 @@ struct LibraryView: View {
                     }) {
                         Image(systemName: "plus")
                             .font(.title2)
-                    }
+                    }.accessibilityLabel("Add new books")
+                        .accessibilityHint("Press to add new books to your library")
                 }
                 
                 
@@ -79,9 +88,9 @@ struct LibraryView: View {
                         editMode = true
                     }) {
                         Text ("Edit")
-                    }
-                    .font(.title2)
-                    .foregroundStyle(.accent)
+                    }.accessibilityHint("Edit books you already inserted")
+                        .font(.title2)
+                        .foregroundStyle(.accent)
                 }
             }.sheet(isPresented: $showModal) {
                 BooksInputView(showModal: $showModal, addBook: { book in

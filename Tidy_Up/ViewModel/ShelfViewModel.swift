@@ -27,6 +27,5 @@ import SwiftUI
     func delete(at offsets: IndexSet) {
         self.books.remove(atOffsets: offsets)
     }
-        
 }
 

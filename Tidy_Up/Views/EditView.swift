@@ -29,12 +29,15 @@ struct EditView: View {
                                     TextField("Book Title", text: $book.title)
                                         .font(.headline)
                                         .keyboardType(.default)
+                                        .accessibilityLabel("Title of the book")
                                     TextField("Author", text: $book.author)
                                         .font(.subheadline)
                                         .keyboardType(.default)
+                                        .accessibilityLabel("Author of \(book.title)")
                                     TextField("Pages", value: $book.pages, format: .number)
                                         .font(.headline)
                                         .keyboardType(.decimalPad)
+                                        .accessibilityLabel("Number of pages of \(book.title)")
                                 }
                             }
                         } // Section of each book

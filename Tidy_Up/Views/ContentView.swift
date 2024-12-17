@@ -17,9 +17,10 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            Tab("Your Library", systemImage: "books.vertical.fill") {
+            Tab("My Library", systemImage: "books.vertical.fill") {
                 LibraryView()
             }
+
             
             Tab("Tidy Up", systemImage: "ruler.fill") {
                 MeasureView()

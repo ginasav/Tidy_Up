@@ -27,7 +27,6 @@ struct MeasureView: View {
             // Ensure AR view covers the entire screen
             ARViewContainer(distance: $distance, positions: $positions, anchors: $anchors)
                 .edgesIgnoringSafeArea(.all)
-            
             // Centered Distance Display
             VStack {
                 
@@ -61,6 +60,7 @@ struct MeasureView: View {
                                     .fill(Color.accentColor.opacity(0.9))
                             )
                     }
+                    .accessibilityLabel("Double-tap to see how many books fit in the measured shelf")
                     
                 }
                 }.padding()
@@ -73,6 +73,7 @@ struct MeasureView: View {
             Image(systemName: "plus")
                 .foregroundStyle(.accent)
                 .font(.title)
+                .accessibilityHidden(true)
             
             
             
@@ -102,6 +103,7 @@ struct MeasureView: View {
                 .padding()
             }
         }
+       
         
     }
     
@@ -190,6 +192,7 @@ class Coordinator: NSObject {
     @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer){
         guard let arView = gestureRecognizer.view as? ARView else { return }
         let touchLocation = gestureRecognizer.location(in: arView)
+        
         
         //Performs a ray cast, where a ray is cast into the scene from the center of the camera through a point in the view, and the results are immediately returned. From our touched point.
         if let hitTestResult = arView.raycast(from: touchLocation, allowing: .estimatedPlane, alignment: .any).first {
