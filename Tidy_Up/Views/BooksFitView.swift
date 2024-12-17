@@ -10,65 +10,79 @@ import SwiftUI
 struct BooksFitView: View {
     
     @EnvironmentObject var shelfViewModel: ShelfViewModel
+    @Environment(\.dismiss) private var dismiss
     var fittingBooks: [BookModel]
     
     var body: some View {
         
-        NavigationView {
-            ZStack {
-                Color.background.ignoresSafeArea()
+        ZStack {
+            Color.background.ignoresSafeArea()
+            
+            VStack {
                 
-                VStack {
+                
+                HStack {
                     
-                    HStack {
-                        
-                        Text("Books that fit:")
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                        
-                        Spacer()
-                        
-                        Text("\(fittingBooks.count)")
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                        
-                    } //Books that fit
-                    .padding()
-                    
-                    HStack {
-                        List(fittingBooks) { book in
-                            
-                            VStack (alignment: .leading) {
-                                Text(book.title)
-                                    .font(.title2)
-                                    .foregroundStyle(.white)
-                                    .fontWeight(.bold)
-                                Text(book.author)
-                                    .font(.subheadline)
-                                    .foregroundStyle(.white)
-                            }
-                        }
-                        
-                        
-                        
-                    }
+                    Text("Books that fit:")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
                     
                     Spacer()
                     
-                }.padding()
+                    Text("\(fittingBooks.count)")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .accessibilityHidden(true)
+                    
+                    
+                } //Books that fit
+                .padding()
+                .accessibilityLabel("Books that fit \(fittingBooks.count)")
                 
+                HStack {
+                    List(fittingBooks) { book in
+                        
+                        VStack (alignment: .leading) {
+                            Text(book.title)
+                                .font(.title2)
+                                .foregroundStyle(.white)
+                                .fontWeight(.bold)
+                            Text(book.author)
+                                .font(.subheadline)
+                                .foregroundStyle(.white)
+                        }
+                        
+                        //Accessibility for each element of the list
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("\(book.title) by \(book.author)")
+                        
+                    }
                     .scrollContentBackground(.hidden)
-                    .listRowBackground(Color.background)
+                }
+                
+                
+                    NavigationLink(destination: LibraryView()) {
+                        Text("Done")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.mySecondary.opacity(0.9))
+                            .cornerRadius(15)
+                }.accessibilityElement(children: .combine)
+                    .accessibilityLabel("Double-tap to go back to library")
+                
+                
+                
             }
             
         }
-        .navigationBarTitle("Books that fit")
-        .navigationBarTitleTextColor(.white)
         
-    }
-}
+        
+    }//END OF BODY
+}//END OF STRUCT
+
+
 
 
 
