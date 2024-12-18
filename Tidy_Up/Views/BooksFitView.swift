@@ -62,15 +62,18 @@ struct BooksFitView: View {
                     .scrollContentBackground(.hidden)
                 }
                 
+                Button  {
+                    dismiss()
+                } label: {
+                    Text("Done")
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(Color.gray.opacity(0.6))
+                        .cornerRadius(15)
+                }
+                .accessibilityLabel("Double-tap to dismiss")
+
                 
-                    NavigationLink(destination: LibraryView()) {
-                        Text("Done")
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.mySecondary.opacity(0.9))
-                            .cornerRadius(15)
-                }.accessibilityElement(children: .combine)
-                    .accessibilityLabel("Double-tap to go back to library")
                 
                 
                 
