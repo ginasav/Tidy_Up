@@ -4,6 +4,7 @@
 //
 //  Created by Gina Saviano on 07/12/24.
 //
+// Stable version 1 on 18/12/2024
 
 import SwiftUI
 
