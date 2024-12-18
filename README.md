@@ -4,8 +4,6 @@ This is my first solo project.
 
 The app idea is simple: using the measure feature of the iPhone, you measure the shelf of your library and it tells you how many books can fit in it!
 
-![App Screenshot](https://github.com/user-attachments/assets/b5f49ce7-3b2d-4f9b-975c-6dd48c2fcdac)
-
 I'm exploring ARKit, RealityKit and some Animation for the splash screen.
 
 ## Features:
