@@ -24,7 +24,7 @@ Some future implementations would be:
 ---
 ## Installation
 
-1. Clone this repository: `git clone <https://github.com/ginasav/tidy_up.git`>
+1. Clone this repository: `git clone <https://github.com/ginasav/Tidy_Up.git`>
 2. Open the project in Xcode.
 3. Run the app on a simulator or connected device.
 
