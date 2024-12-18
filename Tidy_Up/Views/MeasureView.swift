@@ -28,7 +28,22 @@ struct MeasureView: View {
             ARViewContainer(distance: $distance, positions: $positions, anchors: $anchors)
                 .edgesIgnoringSafeArea(.all)
             // Centered Distance Display
+            
+            
+
+            
             VStack {
+                
+                VStack {
+                    Button {
+                        print()
+                    } label: {
+                        Image(systemName:"accessibility.fill")
+                            .scaleEffect(2.0)
+                    }
+                }
+                .accessibilityLabel(Text("Select the Tab Bar Item Tidy Up, hold on the screen with one finger and tap with another finger the screen to position the points"))
+                .accessibilityRemoveTraits(.isButton)
                 
                 VStack {
                     Text("\(String(format: "%.2f", distance)) m")
@@ -70,15 +85,16 @@ struct MeasureView: View {
                 }
             
             // Optional Crosshair Overlay
-            Image(systemName: "plus")
-                .foregroundStyle(.accent)
-                .font(.title)
-                .accessibilityHidden(true)
+//            Image(systemName: "plus")
+//                .foregroundStyle(.accent)
+//                .font(.title)
+//                .accessibilityHidden(true)
             
             
             
-            // Bottom Toolbar
+            // Upper Toolbar
             HStack {
+                
                 Spacer()
                 VStack {
                     HStack {
@@ -99,9 +115,11 @@ struct MeasureView: View {
                         }
                     }
                     Spacer()
+                    
                 }
                 .padding()
-            }
+            }//Reset button
+            
         }
        
         
@@ -208,7 +226,7 @@ class Coordinator: NSObject {
             
             let pointAnchor = AnchorEntity(world: position) //the actual point
             let pointEntity = ModelEntity(
-                mesh: .generatePlane(width: 0.01, height: 0.01),
+                mesh: .generateSphere(radius: 0.005),
                 materials: [SimpleMaterial(color: .accent, isMetallic: false)]
             ) 
             
